@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'game/game.dart';
-import 'paths.dart' as Paths;
+import 'paths.dart' as Path;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +37,9 @@ class _GameWrapperState extends State<GameWrapper> {
 
   void startGame() {
     Flame.images.loadAll(<String>[
-      Paths.background,
+      Path.background,
+      Path.gameLogo,
+      Path.startButton,
     ]);
     game = ValentineGame();
   }

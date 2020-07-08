@@ -38,8 +38,7 @@ class _GameWrapperState extends State<GameWrapper> {
   void startGame() {
     Flame.images.loadAll(<String>[
       Path.background,
-      Path.gameName,
-      Path.logoArt,
+      Path.gameLogo,
       Path.startButton,
     ]);
     game = ValentineGame();

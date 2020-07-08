@@ -10,3 +10,6 @@ const double gameNameY = 1 / 4; // 25% Screen Height from Top
 const double startButtonWidthPortion = 2 / 3;
 const double startButtonDimensionRatio = 628 / 87;
 const double startButtonY = 3 / 4;
+
+// Running
+const int laneQuantity = 5;

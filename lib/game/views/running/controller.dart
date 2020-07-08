@@ -11,13 +11,9 @@ class Controller extends PositionComponent
     with Resizable, HasGameRef, Tapable, ComposedComponent {
   ValentineGame game;
 
-  int laneQuantity = Config.laneQuantity;
-  double laneWidth;
-
   bool paused = false;
 
   Controller(this.game) : super() {
-    laneWidth = game.size.width / laneQuantity;
-    this.size = game.size;
+    // Controller Constructor
   }
 }

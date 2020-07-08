@@ -1,5 +1,7 @@
 library configs;
 
+import 'dart:math';
+
 // Initial View
 //    GameName -> Anchor: Top Center
 const double gameNameWidthPortion = 3 / 4; // 75% of screen width
@@ -13,3 +15,7 @@ const double startButtonY = 3 / 4;
 
 // Running
 const int laneQuantity = 5;
+//    Avatar
+const double avatarWidth = 1; // 100% laneWidth
+const double avatarDimensionRatio = 1; // <<<<<<<<<<<<<<< check
+const double avatarFlipVelocity = pi / 15; // (pi / 15 * 60)/s

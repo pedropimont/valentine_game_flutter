@@ -40,6 +40,7 @@ class _GameWrapperState extends State<GameWrapper> {
       Path.background,
       Path.gameLogo,
       Path.startButton,
+      Path.avatar,
     ]);
     game = ValentineGame();
   }

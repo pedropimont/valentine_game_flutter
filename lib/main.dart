@@ -1,4 +1,5 @@
 import 'package:flame/flame.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -40,8 +41,18 @@ class _GameWrapperState extends State<GameWrapper> {
       Path.background,
       Path.gameLogo,
       Path.startButton,
+      Path.avatar,
+      Path.pauseButton,
+      Path.resumeButton,
     ]);
     game = ValentineGame();
+
+    HorizontalDragGestureRecognizer horizontalDrag =
+        HorizontalDragGestureRecognizer();
+
+    horizontalDrag.onUpdate = game.onHorizontalDragUpdate;
+    horizontalDrag.onEnd = game.onHorizontalDragEnd;
+    Flame.util.addGestureRecognizer(horizontalDrag);
   }
 
   @override

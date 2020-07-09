@@ -50,6 +50,9 @@ flutter:
     - assets/images/background.png
     - assets/images/views/initial/gameLogo.png
     - assets/images/views/initial/startButton.png
+    - assets/images/views/running/avatar.png
+    - assets/images/views/running/pauseButton.png
+    - assets/images/views/running/resumeButton.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

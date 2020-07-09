@@ -32,6 +32,10 @@ class ValentineGame extends BaseGame with HasTapableComponents {
   }
 
   GestureDragUpdateCallback onHorizontalDragUpdate(DragUpdateDetails d) {
+    _updateDragDirection(d);
+  }
+
+  void _updateDragDirection(DragUpdateDetails d) {
     if (d.primaryDelta > 0) {
       dragDirection = DragDirection.right;
     } else if (d.primaryDelta < 0) {
@@ -48,9 +52,9 @@ class ValentineGame extends BaseGame with HasTapableComponents {
 
   @override
   void onTapUp(int pointerId, TapUpDetails d) {
+    super.onTapUp(pointerId, d);
     if (currentView == View.running && runningView?.avatar != null)
       runningView.avatar.handleTapUp();
-    super.onTapUp(pointerId, d);
   }
 
   @override

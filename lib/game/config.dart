@@ -19,3 +19,6 @@ const int laneQuantity = 5;
 const double avatarWidth = 1; // 100% laneWidth
 const double avatarDimensionRatio = 1; // <<<<<<<<<<<<<<< check
 const double avatarFlipVelocity = pi / 15; // (pi / 15 * 60)/s
+//    PauseResumeButton
+const double pauseResumeButtonWidth = 2 / 7; // 25% screen
+const double pauseResumeDimensionRatio = 168 / 46; // w x h (Standard)

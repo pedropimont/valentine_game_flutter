@@ -8,12 +8,14 @@ import '../../config.dart' as Config;
 import '../../game.dart';
 import 'controller.dart';
 import 'avatar.dart';
+import 'pauseResumeButton.dart';
 
 class RunningView extends PositionComponent
     with Resizable, HasGameRef, Tapable, ComposedComponent {
   ValentineGame game;
   Controller controller;
   Avatar avatar;
+  PauseResumeButton pauseResumeButton;
 
   int laneQuantity = Config.laneQuantity;
   double laneWidth;
@@ -21,10 +23,12 @@ class RunningView extends PositionComponent
   RunningView(this.game) : super() {
     controller = Controller(game);
     avatar = Avatar(this);
+    pauseResumeButton = PauseResumeButton(controller);
 
-    components..add(avatar);
-    laneWidth = game.size.width / laneQuantity;
-    this.size = game.size;
+
+    size = game.size;
+    laneWidth = size.width / laneQuantity;
+
     components..add(controller)..add(avatar);
   }
 }

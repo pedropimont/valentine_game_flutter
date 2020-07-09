@@ -16,4 +16,11 @@ class Controller extends PositionComponent
   Controller(this.game) : super() {
     // Controller Constructor
   }
+
+  @override
+  void update(double t) {
+    if (!paused) {
+      super.update(t);
+    }
+  }
 }

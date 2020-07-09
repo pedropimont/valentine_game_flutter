@@ -47,6 +47,13 @@ class ValentineGame extends BaseGame with HasTapableComponents {
   }
 
   @override
+  void onTapUp(int pointerId, TapUpDetails d) {
+    if (currentView == View.running && runningView?.avatar != null)
+      runningView.avatar.handleTapUp();
+    super.onTapUp(pointerId, d);
+  }
+
+  @override
   bool debugMode() {
     return false;
   }

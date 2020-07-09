@@ -25,10 +25,9 @@ class RunningView extends PositionComponent
     avatar = Avatar(this);
     pauseResumeButton = PauseResumeButton(controller);
 
-
     size = game.size;
     laneWidth = size.width / laneQuantity;
 
-    components..add(controller)..add(avatar);
+    components..add(controller)..add(avatar)..add(pauseResumeButton);
   }
 }

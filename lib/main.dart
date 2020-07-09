@@ -50,6 +50,7 @@ class _GameWrapperState extends State<GameWrapper> {
 
     horizontalDrag.onUpdate = game.onHorizontalDragUpdate;
     horizontalDrag.onEnd = game.onHorizontalDragEnd;
+    Flame.util.addGestureRecognizer(horizontalDrag);
   }
 
   @override

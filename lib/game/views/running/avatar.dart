@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flame/anchor.dart';
 import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
+import 'package:valentinegameflutter/game/game.dart';
 
 import '../../config.dart' as Config;
 import '../../../paths.dart' as Path;
@@ -11,7 +12,7 @@ import '../../../paths.dart' as Path;
 import 'controller.dart';
 import 'runningView.dart';
 
-enum AvatarStatus { flipping, moving, idle }
+enum AvatarStatus { flipping, moving, idle } // moving not doing anything
 
 class Avatar extends SpriteComponent {
   RunningView runningView;
@@ -56,7 +57,26 @@ class Avatar extends SpriteComponent {
     // .add(Bullet());
   }
 
-  void handleHorizontalDragEnd() {
-    // TODO: Implement FlipInverter and HorizontalDrag
+  void handleHorizontalDragEnd(DragDirection dragDirection) {
+    switch (dragDirection) {
+      case DragDirection.right:
+        {
+          if (lane < 5) {
+            renderFlipX = false;
+            lane += 1;
+          }
+          break;
+        }
+      case DragDirection.left:
+        {
+          if (lane > 1) {
+            renderFlipX = true;
+            lane -= 1;
+          }
+          break;
+        }
+    }
+    // duplicate
+    x = lane * runningView.laneWidth - runningView.laneWidth / 2;
   }
 }

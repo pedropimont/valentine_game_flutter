@@ -8,6 +8,7 @@ import 'package:flame/sprite.dart';
 import '../../config.dart' as Config;
 import '../../../utils.dart' as Utils;
 import '../../../paths.dart' as Path;
+import 'avatar.dart';
 import 'controller.dart';
 
 enum EnemyType { enemy1, enemy2, enemy3 }
@@ -16,6 +17,10 @@ class Enemy extends SpriteComponent with Resizable {
   Controller controller;
   Sprite sprite;
   int lane;
+  double _fallVelocity;
+  double _yToCheckForCollision;
+
+  bool remove = false;
 
   Enemy._(this.sprite, this.controller) : super.fromSprite(16.0, 16.0, sprite);
 
@@ -63,14 +68,50 @@ class Enemy extends SpriteComponent with Resizable {
     lane = Utils.rnd.nextInt(controller.laneQuantity) + 1;
     x = lane * controller.laneWidth - controller.laneWidth / 2;
     y = 0;
+
+    _fallVelocity = 10.0;
+    _yToCheckForCollision = controller.size.height - controller.avatar.height;
   }
 
   @override
   void update(double t) {
-    // _fall();
-    // _rotate();
-    // _checkForCollision;
-    // if (y >= xx) remove = true
+    _fall(t);
+    _rotate(t);
+    if (_isHeightToCheckCollision) {
+      if (_collision) {
+        // controller.lostLife();
+        remove = true;
+      }
+      remove = _hasReachedFloor;
+    }
     super.update(t);
+  }
+
+  void _fall(double t) {
+    y += t * _fallVelocity;
+  }
+
+  void _rotate(double t) {
+    angle += 3.14 / 10 * t; // << ConfigFile: pi/10
+  }
+
+  bool get _hasReachedFloor =>
+      (y >= _yToCheckForCollision * Config.enemyHeightToRemove);
+
+  /// no point in keep checking for collisions until certain y position
+  bool get _isHeightToCheckCollision => (y >= _yToCheckForCollision);
+
+  bool get _collision {
+    if (this.toRect().contains(controller.avatar.toRect().topLeft) ||
+        this.toRect().contains(controller.avatar.toRect().topCenter) ||
+        this.toRect().contains(controller.avatar.toRect().topRight)) {
+      return true;
+    }
+    return false;
+  }
+
+  @override
+  bool destroy() {
+    return remove;
   }
 }

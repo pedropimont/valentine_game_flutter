@@ -10,18 +10,17 @@ import '../../config.dart' as Config;
 import '../../../paths.dart' as Path;
 
 import 'controller.dart';
-import 'runningView.dart';
 
 enum AvatarStatus { flipping, moving, idle } // moving not doing anything
 
 class Avatar extends SpriteComponent {
-  RunningView runningView;
+  Controller controller;
   int lane;
   AvatarStatus status = AvatarStatus.idle;
 
-  Avatar(this.runningView) : super.fromSprite(16.0, 16.0, Sprite(Path.avatar)) {
+  Avatar(this.controller) : super.fromSprite(16.0, 16.0, Sprite(Path.avatar)) {
     anchor = Anchor.center;
-    lane = (runningView.laneQuantity + 1) ~/ 2;
+    lane = (controller.laneQuantity + 1) ~/ 2;
   }
 
   @override
@@ -32,9 +31,9 @@ class Avatar extends SpriteComponent {
 
   @override
   void resize(Size size) {
-    width = runningView.laneWidth * Config.avatarWidth;
+    width = controller.laneWidth * Config.avatarWidth;
     height = width * Config.avatarDimensionRatio;
-    x = lane * runningView.laneWidth - runningView.laneWidth / 2;
+    x = lane * controller.laneWidth - controller.laneWidth / 2;
     y = size.height - height / 2;
   }
 
@@ -77,6 +76,6 @@ class Avatar extends SpriteComponent {
         }
     }
     // duplicate
-    x = lane * runningView.laneWidth - runningView.laneWidth / 2;
+    x = lane * controller.laneWidth - controller.laneWidth / 2;
   }
 }

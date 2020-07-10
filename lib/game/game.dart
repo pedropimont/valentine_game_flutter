@@ -1,10 +1,11 @@
 import 'package:flame/components/mixins/tapable.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/gestures.dart';
+import 'package:valentinegameflutter/game/views/running/controller.dart';
 
 import 'background.dart';
 import 'views/initial/initialView.dart';
-import 'views/running/runningView.dart';
+
 
 enum View { initial, running, gameOver }
 enum DragDirection { left, right }
@@ -12,7 +13,7 @@ enum DragDirection { left, right }
 class ValentineGame extends BaseGame with HasTapableComponents {
   Background background;
   InitialView initialView;
-  RunningView runningView;
+  Controller controller;
   DragDirection dragDirection;
   View currentView;
 
@@ -25,10 +26,10 @@ class ValentineGame extends BaseGame with HasTapableComponents {
 
   void start() {
     if (initialView != null) components.remove(initialView);
-    if (runningView != null) components.remove(runningView);
+    if (controller != null) components.remove(controller);
     currentView = View.running;
-    runningView = RunningView(this);
-    this.add(runningView);
+    controller = Controller(this);
+    this.add(controller);
   }
 
   GestureDragUpdateCallback onHorizontalDragUpdate(DragUpdateDetails d) {
@@ -46,15 +47,15 @@ class ValentineGame extends BaseGame with HasTapableComponents {
   }
 
   GestureDragEndCallback onHorizontalDragEnd(DragEndDetails d) {
-    if (dragDirection != null && runningView?.avatar != null)
-      runningView.avatar.handleHorizontalDragEnd(dragDirection);
+    if (dragDirection != null && controller?.avatar != null)
+      controller.avatar.handleHorizontalDragEnd(dragDirection);
   }
 
   @override
   void onTapUp(int pointerId, TapUpDetails d) {
     super.onTapUp(pointerId, d);
-    if (currentView == View.running && runningView?.avatar != null)
-      runningView.avatar.handleTapUp();
+    if (currentView == View.running && controller?.avatar != null)
+      controller.avatar.handleTapUp();
   }
 
   @override

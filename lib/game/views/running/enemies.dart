@@ -10,33 +10,50 @@ import '../../../utils.dart' as Utils;
 import '../../../paths.dart' as Path;
 import 'controller.dart';
 
-enum EnemyType { covid }
+enum EnemyType { enemy1, enemy2, enemy3 }
 
 class Enemy extends SpriteComponent with Resizable {
   Controller controller;
   Sprite sprite;
   int lane;
-  bool remove = false;
-  double speed;
 
-  factory Enemy(Controller controller) {
-    int _rndEnemyType = Utils.rnd.nextInt(EnemyType.values.length);
-    switch (_rndEnemyType) {
-      case 0:
-        {
-          return Enemy.covid(controller);
-        }
-      default:
-        return Enemy.covid(controller);
-    }
-  }
+  Enemy._(this.sprite, this.controller) : super.fromSprite(16.0, 16.0, sprite);
 
-  Enemy.covid(this.controller) {
-    sprite = Sprite(Path.covid);
+  Enemy.enemy1(this.controller) {
+    sprite = Sprite(Path.enemy1);
     Enemy._(sprite, controller);
   }
 
-  Enemy._(this.sprite, this.controller) : super.fromSprite(16.0, 16.0, sprite);
+  Enemy.enemy2(this.controller) {
+    sprite = Sprite(Path.enemy2);
+    Enemy._(sprite, controller);
+  }
+
+  Enemy.enemy3(this.controller) {
+    sprite = Sprite(Path.enemy3);
+    Enemy._(sprite, controller);
+  }
+
+  factory Enemy(Controller controller) {
+    int _rndInt = Utils.rnd.nextInt(EnemyType.values.length);
+    EnemyType _rndEnemyType = EnemyType.values[_rndInt];
+    switch (_rndEnemyType) {
+      case EnemyType.enemy1:
+        {
+          return Enemy.enemy1(controller);
+        }
+      case EnemyType.enemy2:
+        {
+          return Enemy.enemy2(controller);
+        }
+      case EnemyType.enemy3:
+        {
+          return Enemy.enemy3(controller);
+        }
+      default:
+        return Enemy.enemy1(controller);
+    }
+  }
 
   @override
   void resize(Size size) {
@@ -49,13 +66,11 @@ class Enemy extends SpriteComponent with Resizable {
   }
 
   @override
-  void render(Canvas canvas) {
-    // TODO: implement render
-    super.render(canvas);
-  }
-
-  @override
   void update(double t) {
+    // _fall();
+    // _rotate();
+    // _checkForCollision;
+    // if (y >= xx) remove = true
     super.update(t);
   }
 }

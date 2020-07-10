@@ -3,6 +3,7 @@ import 'package:flame/components/composed_component.dart';
 import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:flame/components/mixins/resizable.dart';
 import 'package:flame/components/mixins/tapable.dart';
+import 'package:valentinegameflutter/game/views/running/enemies.dart';
 
 import '../../game.dart';
 import '../../config.dart' as Config;
@@ -15,18 +16,20 @@ class Controller extends PositionComponent
   bool paused = false;
   Avatar avatar;
   PauseResumeButton pauseResumeButton;
+  Enemy enemy;
 
   int laneQuantity = Config.laneQuantity;
   double laneWidth;
 
   Controller(this.game) : super() {
-    avatar = Avatar(this);
-    pauseResumeButton = PauseResumeButton(this);
-
     size = game.size;
     laneWidth = size.width / laneQuantity;
 
-    components..add(avatar)..add(pauseResumeButton);
+    avatar = Avatar(this);
+    pauseResumeButton = PauseResumeButton(this);
+    enemy = Enemy(this);
+
+    components..add(avatar)..add(pauseResumeButton)..add(enemy);
   }
 
   @override

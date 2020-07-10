@@ -1,11 +1,10 @@
 import 'package:flame/components/mixins/tapable.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/gestures.dart';
-import 'package:valentinegameflutter/game/views/running/controller.dart';
 
 import 'background.dart';
 import 'views/initial/initialView.dart';
-
+import 'views/running/controller.dart';
 
 enum View { initial, running, gameOver }
 enum DragDirection { left, right }

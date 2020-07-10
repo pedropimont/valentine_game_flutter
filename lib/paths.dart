@@ -9,3 +9,4 @@ const String startButton = 'views/initial/startButton.png';
 const String avatar = 'views/running/avatar.png';
 const String pauseButton = 'views/running/pauseButton.png';
 const String resumeButton = 'views/running/resumeButton.png';
+const String covid = 'views/running/covid.png';

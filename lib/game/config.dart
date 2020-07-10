@@ -1,6 +1,6 @@
 library configs;
 
-import 'dart:math';
+import 'dart:math' show pi;
 
 // Initial View
 //    GameName -> Anchor: Top Center
@@ -22,3 +22,17 @@ const double avatarFlipVelocity = pi / 15; // (pi / 15 * 60)/s
 //    PauseResumeButton
 const double pauseResumeButtonWidth = 2 / 7; // 25% screen
 const double pauseResumeDimensionRatio = 168 / 46; // w x h (Standard)
+
+//    Enemies
+const double enemyWidth = 0.70; // 35% from laneWidth
+const double enemyDimensionRatio = 1;
+const double enemyHeightToRemove = 0.75; // 75% Avatar
+const double enemyInitialSpeed = 320;
+const double enemyMaxSpeed = 800;
+const double enemyIncrementSpeed = 0.20;
+const double enemyRandomSpeedFactor = 0.25;
+//      Enemies Spawn Controllers
+const double enemyRandomSpawnFactor = 0.25;
+const int enemyInitialSpawnTime = 1600;
+const int enemyMinSpawnTime = 700;
+const int enemyChangeSpawnTime = 1;

@@ -10,8 +10,6 @@ import '../../../paths.dart' as Path;
 import 'controller.dart';
 import 'bonus.dart';
 
-// TODO: GameConfig
-
 class Bullet extends SpriteComponent with Resizable {
   Controller controller;
   bool remove = false;
@@ -19,7 +17,7 @@ class Bullet extends SpriteComponent with Resizable {
   Bullet(this.controller) : super.fromSprite(16.0, 16.0, Sprite(Path.bullet));
 
   void checkForCollision() {
-    for (var bonus in controller.components.whereType<Bonus>()) {
+    for (Bonus bonus in controller.components.whereType<Bonus>()) {
       if (this.toRect().contains(bonus.toRect().topLeft) ||
           this.toRect().contains(bonus.toRect().topCenter) ||
           this.toRect().contains(bonus.toRect().topRight)) {

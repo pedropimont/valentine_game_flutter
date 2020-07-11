@@ -55,7 +55,7 @@ class Avatar extends SpriteComponent {
 
   void _shoot() {
     // should be called from here?
-    controller.components.add(Bullet(controller));
+    controller.add(Bullet(controller));
   }
 
   void handleHorizontalDragEnd(DragDirection dragDirection) {

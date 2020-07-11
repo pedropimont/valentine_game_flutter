@@ -90,7 +90,8 @@ class Controller extends PositionComponent
   void loseHealthPoint() {
     lives -= 1;
     if (lives < 1) {
-//      game.gameOver();
+      // maybe should be like this, lose Health should just lose health not end game
+      game.gameOver();
     }
   }
 

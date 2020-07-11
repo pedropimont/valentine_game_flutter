@@ -16,6 +16,9 @@ const String enemy3 = 'views/running/enemies/enemy3.png';
 const String bonus1 = 'views/running/bonus/bonus1.png';
 const String bonus2 = 'views/running/bonus/bonus2.png';
 const String bonus3 = 'views/running/bonus/bonus3.png';
+const String brokenHeart = 'views/gameOver/brokenHeart.png';
+const String playAgainButton = 'views/gameOver/playAgainButton.png';
+const String sadAvatar = 'views/gameOver/sadAvatar.png';
 
 const List<String> pathsList = [
   background,
@@ -32,6 +35,9 @@ const List<String> pathsList = [
   bonus1,
   bonus2,
   bonus3,
+  brokenHeart,
+  playAgainButton,
+  sadAvatar,
 ];
 
 const List<String> bonus1SpritePathList = [bonus1];

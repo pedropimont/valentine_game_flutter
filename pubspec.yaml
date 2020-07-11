@@ -61,6 +61,9 @@ flutter:
     - assets/images/views/running/bonus/bonus1.png
     - assets/images/views/running/bonus/bonus2.png
     - assets/images/views/running/bonus/bonus3.png
+    - assets/images/views/gameOver/brokenHeart.png
+    - assets/images/views/gameOver/playAgainButton.png
+    - assets/images/views/gameOver/sadAvatar.png
 
 
 

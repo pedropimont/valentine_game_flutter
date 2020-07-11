@@ -68,7 +68,7 @@ class Enemy extends SpriteComponent with Resizable {
     _rotate(t);
     if (_isHeightToCheckCollision) {
       if (_collision) {
-        // controller.lostLife();
+        controller.loseHealthPoint();
         remove = true;
       }
       remove = _hasReachedFloor;

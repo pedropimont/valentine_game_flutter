@@ -4,6 +4,7 @@ import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:flame/components/mixins/resizable.dart';
 import 'package:flame/components/mixins/tapable.dart';
 import 'package:valentinegameflutter/game/views/running/enemies.dart';
+import 'package:valentinegameflutter/game/views/running/healthPoints.dart';
 
 import '../../game.dart';
 import '../../config.dart' as Config;
@@ -15,10 +16,12 @@ import 'pauseResumeButton.dart';
 class Controller extends PositionComponent
     with Resizable, HasGameRef, Tapable, ComposedComponent {
   ValentineGame game;
-  bool paused = false;
   Avatar avatar;
+  HealthPoints healthPoints;
   PauseResumeButton pauseResumeButton;
 
+  bool paused = false;
+  int lives = Config.lives;
   int laneQuantity = Config.laneQuantity;
   double laneWidth;
 
@@ -36,9 +39,10 @@ class Controller extends PositionComponent
     laneWidth = size.width / laneQuantity;
 
     avatar = Avatar(this);
+    healthPoints = HealthPoints(this);
     pauseResumeButton = PauseResumeButton(this);
 
-    components..add(avatar)..add(pauseResumeButton);
+    components..add(avatar)..add(pauseResumeButton)..add(healthPoints);
 
     currentBonusSpawnTime = Config.initialBonusSpawnTime;
     currentEnemySpawnTime = Config.enemyInitialSpawnTime;
@@ -80,6 +84,13 @@ class Controller extends PositionComponent
         _updateBonusSpawnTime();
       }
       super.update(t);
+    }
+  }
+
+  void loseHealthPoint() {
+    lives -= 1;
+    if (lives < 1) {
+//      game.gameOver();
     }
   }
 

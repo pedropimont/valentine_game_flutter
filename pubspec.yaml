@@ -54,6 +54,7 @@ flutter:
     - assets/images/views/running/pauseButton.png
     - assets/images/views/running/resumeButton.png
     - assets/images/views/running/bonusTimer.png
+    - assets/images/views/running/healthPoint.png
     - assets/images/views/running/enemies/enemy1.png
     - assets/images/views/running/enemies/enemy2.png
     - assets/images/views/running/enemies/enemy3.png

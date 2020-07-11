@@ -13,8 +13,13 @@ const double startButtonWidthPortion = 2 / 3;
 const double startButtonDimensionRatio = 628 / 87;
 const double startButtonY = 3 / 4;
 
+//    Health Points
+const double healthPointWidth = 1 / 12; // from screen
+const double healthPointDimensionRatio = 1; // <<<<<<<< check
+
 // Running
 const int laneQuantity = 5;
+const int lives = 3;
 //    Avatar
 const double avatarWidth = 1; // 100% laneWidth
 const double avatarDimensionRatio = 1; // <<<<<<<<<<<<<<< check

@@ -48,6 +48,24 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/background.png
+    - assets/images/views/initial/gameLogo.png
+    - assets/images/views/initial/startButton.png
+    - assets/images/views/running/avatar.png
+    - assets/images/views/running/pauseButton.png
+    - assets/images/views/running/resumeButton.png
+    - assets/images/views/running/bonusTimer.png
+    - assets/images/views/running/healthPoint.png
+    - assets/images/views/running/bullet.png
+    - assets/images/views/running/enemies/enemy1.png
+    - assets/images/views/running/enemies/enemy2.png
+    - assets/images/views/running/enemies/enemy3.png
+    - assets/images/views/running/bonus/bonus1.png
+    - assets/images/views/running/bonus/bonus2.png
+    - assets/images/views/running/bonus/bonus3.png
+    - assets/images/views/gameOver/brokenHeart.png
+    - assets/images/views/gameOver/playAgainButton.png
+    - assets/images/views/gameOver/sadAvatar.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

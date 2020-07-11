@@ -1,9 +1,10 @@
 import 'package:flame/flame.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'game/game.dart';
-import 'paths.dart' as Paths;
+import 'paths.dart' as Path;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,10 +37,15 @@ class _GameWrapperState extends State<GameWrapper> {
   }
 
   void startGame() {
-    Flame.images.loadAll(<String>[
-      Paths.background,
-    ]);
+    Flame.images.loadAll(Path.pathsList);
     game = ValentineGame();
+
+    HorizontalDragGestureRecognizer horizontalDrag =
+        HorizontalDragGestureRecognizer();
+
+    horizontalDrag.onUpdate = game.onHorizontalDragUpdate;
+    horizontalDrag.onEnd = game.onHorizontalDragEnd;
+    Flame.util.addGestureRecognizer(horizontalDrag);
   }
 
   @override

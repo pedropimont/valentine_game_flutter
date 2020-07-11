@@ -8,7 +8,6 @@ import 'package:flame/sprite.dart';
 import '../../config.dart' as Config;
 import '../../../utils.dart' as Utils;
 import '../../../paths.dart' as Path;
-import 'avatar.dart';
 import 'controller.dart';
 
 enum EnemyType { enemy1, enemy2, enemy3 }
@@ -22,21 +21,12 @@ class Enemy extends SpriteComponent with Resizable {
 
   bool remove = false;
 
-  Enemy._(this.sprite, this.controller) : super.fromSprite(16.0, 16.0, sprite);
-
-  Enemy.enemy1(this.controller) {
-    sprite = Sprite(Path.enemy1);
-    Enemy._(sprite, controller);
-  }
-
-  Enemy.enemy2(this.controller) {
-    sprite = Sprite(Path.enemy2);
-    Enemy._(sprite, controller);
-  }
-
-  Enemy.enemy3(this.controller) {
-    sprite = Sprite(Path.enemy3);
-    Enemy._(sprite, controller);
+  Enemy._(this.sprite, this.controller) : super.fromSprite(16.0, 16.0, sprite) {
+    _fallVelocity = controller.enemyCurrentSpeed *
+        (1 +
+            Utils.nextDoubleFromMinusFactorToFactor(
+                Config.enemyRandomSpeedFactor));
+    _yToCheckForCollision = controller.size.height - controller.avatar.height;
   }
 
   factory Enemy(Controller controller) {
@@ -45,18 +35,18 @@ class Enemy extends SpriteComponent with Resizable {
     switch (_rndEnemyType) {
       case EnemyType.enemy1:
         {
-          return Enemy.enemy1(controller);
+          return Enemy._(Sprite(Path.enemy1), controller);
         }
       case EnemyType.enemy2:
         {
-          return Enemy.enemy2(controller);
+          return Enemy._(Sprite(Path.enemy2), controller);
         }
       case EnemyType.enemy3:
         {
-          return Enemy.enemy3(controller);
+          return Enemy._(Sprite(Path.enemy3), controller);
         }
       default:
-        return Enemy.enemy1(controller);
+        return Enemy._(Sprite(Path.enemy1), controller);
     }
   }
 
@@ -68,13 +58,11 @@ class Enemy extends SpriteComponent with Resizable {
     lane = Utils.rnd.nextInt(controller.laneQuantity) + 1;
     x = lane * controller.laneWidth - controller.laneWidth / 2;
     y = 0;
-
-    _fallVelocity = 10.0;
-    _yToCheckForCollision = controller.size.height - controller.avatar.height;
   }
 
   @override
   void update(double t) {
+    print('$_fallVelocity');
     _fall(t);
     _rotate(t);
     if (_isHeightToCheckCollision) {

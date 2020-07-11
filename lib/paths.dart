@@ -10,6 +10,7 @@ const String pauseButton = 'views/running/pauseButton.png';
 const String resumeButton = 'views/running/resumeButton.png';
 const String bonusTimer = 'views/running/bonusTimer.png';
 const String healthPoint = 'views/running/healthPoint.png';
+const String bullet = 'views/running/bullet.png';
 const String enemy1 = 'views/running/enemies/enemy1.png';
 const String enemy2 = 'views/running/enemies/enemy2.png';
 const String enemy3 = 'views/running/enemies/enemy3.png';
@@ -29,6 +30,7 @@ const List<String> pathsList = [
   resumeButton,
   bonusTimer,
   healthPoint,
+  bullet,
   enemy1,
   enemy2,
   enemy3,

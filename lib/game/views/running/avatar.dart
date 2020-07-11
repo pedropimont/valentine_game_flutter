@@ -9,6 +9,7 @@ import '../../config.dart' as Config;
 import '../../../paths.dart' as Path;
 
 import '../../game.dart';
+import 'bullet.dart';
 import 'controller.dart';
 
 enum AvatarStatus { flipping, moving, idle } // moving not doing anything
@@ -53,7 +54,8 @@ class Avatar extends SpriteComponent {
   }
 
   void _shoot() {
-    // .add(Bullet());
+    // should be called from here?
+    controller.components.add(Bullet(controller));
   }
 
   void handleHorizontalDragEnd(DragDirection dragDirection) {

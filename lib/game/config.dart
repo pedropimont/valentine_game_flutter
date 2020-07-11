@@ -27,7 +27,10 @@ const double avatarFlipVelocity = pi / 15; // (pi / 15 * 60)/s
 //    PauseResumeButton
 const double pauseResumeButtonWidth = 2 / 7; // 25% screen
 const double pauseResumeDimensionRatio = 168 / 46; // w x h (Standard)
-
+//    Bullet
+const double bulletWidth = 0.4;
+const double bulletDimensionRatio = 1;
+const double bulletSpeed = 500; // 10 * t
 //    Enemies
 const double enemyWidth = 0.70; // 35% from laneWidth
 const double enemyDimensionRatio = 1;

@@ -37,17 +37,7 @@ class _GameWrapperState extends State<GameWrapper> {
   }
 
   void startGame() {
-    Flame.images.loadAll(<String>[
-      Path.background,
-      Path.gameLogo,
-      Path.startButton,
-      Path.avatar,
-      Path.pauseButton,
-      Path.resumeButton,
-      Path.enemy1,
-      Path.enemy2,
-      Path.enemy3,
-    ]);
+    Flame.images.loadAll(Path.pathsList);
     game = ValentineGame();
 
     HorizontalDragGestureRecognizer horizontalDrag =

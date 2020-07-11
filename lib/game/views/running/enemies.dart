@@ -21,14 +21,6 @@ class Enemy extends SpriteComponent with Resizable {
 
   bool remove = false;
 
-  Enemy._(this.sprite, this.controller) : super.fromSprite(16.0, 16.0, sprite) {
-    _fallVelocity = controller.enemyCurrentSpeed *
-        (1 +
-            Utils.nextDoubleFromMinusFactorToFactor(
-                Config.enemyRandomSpeedFactor));
-    _yToCheckForCollision = controller.size.height - controller.avatar.height;
-  }
-
   factory Enemy(Controller controller) {
     int _rndInt = Utils.rnd.nextInt(EnemyType.values.length);
     EnemyType _rndEnemyType = EnemyType.values[_rndInt];
@@ -50,19 +42,28 @@ class Enemy extends SpriteComponent with Resizable {
     }
   }
 
-  @override
-  void resize(Size size) {
+  Enemy._(this.sprite, this.controller) : super.fromSprite(16.0, 16.0, sprite) {
+    lane = Utils.rnd.nextInt(controller.laneQuantity) + 1;
+    _fallVelocity = controller.enemyCurrentSpeed *
+        (1 +
+            Utils.nextDoubleFromMinusFactorToFactor(
+                Config.enemyRandomSpeedFactor));
+    _yToCheckForCollision = controller.size.height - controller.avatar.height;
+
     anchor = Anchor.center;
     width = controller.laneWidth * Config.enemyWidth;
     height = width * Config.enemyDimensionRatio;
-    lane = Utils.rnd.nextInt(controller.laneQuantity) + 1;
     x = lane * controller.laneWidth - controller.laneWidth / 2;
     y = 0;
   }
 
   @override
+  void resize(Size size) {
+    // It's not calling resize when creating new enemy. Why?
+  }
+
+  @override
   void update(double t) {
-    print('$_fallVelocity');
     _fall(t);
     _rotate(t);
     if (_isHeightToCheckCollision) {
@@ -96,6 +97,13 @@ class Enemy extends SpriteComponent with Resizable {
       return true;
     }
     return false;
+  }
+
+  @override
+  void onDestroy() {
+    // not calling on destroy also.
+    print('destroying $this');
+    super.onDestroy();
   }
 
   @override

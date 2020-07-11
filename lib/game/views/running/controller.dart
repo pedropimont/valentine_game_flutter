@@ -9,6 +9,7 @@ import '../../game.dart';
 import '../../config.dart' as Config;
 import '../../../utils.dart' as Utils;
 import 'avatar.dart';
+import 'bonus.dart';
 import 'pauseResumeButton.dart';
 
 class Controller extends PositionComponent
@@ -39,22 +40,22 @@ class Controller extends PositionComponent
 
     components..add(avatar)..add(pauseResumeButton);
 
-//    currentBonusSpawnTime = Config.initialBonusSpawnTime;
+    currentBonusSpawnTime = Config.initialBonusSpawnTime;
     currentEnemySpawnTime = Config.enemyInitialSpawnTime;
 
-//    nextBonusSpawn = getNextBonusSpawn;
+    nextBonusSpawn = getNextBonusSpawn;
     nextEnemySpawn = getNextEnemySpawn;
 
     enemyCurrentSpeed = Config.enemyInitialSpeed;
   }
 
-//  int get getNextBonusSpawn =>
-//      nowTimestamp +
-//      (currentBonusSpawnTime *
-//              (1 +
-//                  Utils.nextDoubleFromMinusFactorToFactor(
-//                      Config.bonusRandomSpawnFactor)))
-//          .toInt();
+  int get getNextBonusSpawn =>
+      nowTimestamp +
+      (currentBonusSpawnTime *
+              (1 +
+                  Utils.nextDoubleFromMinusFactorToFactor(
+                      Config.bonusRandomSpawnFactor)))
+          .toInt();
 
   int get getNextEnemySpawn =>
       nowTimestamp +
@@ -74,7 +75,10 @@ class Controller extends PositionComponent
         _updateEnemySpawnTime();
         _updateEnemyVelocity();
       }
-
+      if (nowTimestamp >= nextBonusSpawn) {
+        _spawnRndBonus();
+        _updateBonusSpawnTime();
+      }
       super.update(t);
     }
   }
@@ -83,11 +87,21 @@ class Controller extends PositionComponent
     components.add(Enemy(this));
   }
 
+  void _spawnRndBonus() {
+    components.add(Bonus(this));
+  }
+
   // This too will change for getters. Rename Variables also
   void _updateEnemySpawnTime() {
     if (currentEnemySpawnTime > Config.enemyMinSpawnTime)
       currentEnemySpawnTime -= Config.enemyChangeSpawnTime;
     nextEnemySpawn = getNextEnemySpawn;
+  }
+
+  void _updateBonusSpawnTime() {
+    if (currentBonusSpawnTime > Config.minBonusSpawnTime)
+      currentBonusSpawnTime -= Config.changeBonusSpawnTime;
+    nextBonusSpawn = getNextBonusSpawn;
   }
 
   void _updateEnemyVelocity() {

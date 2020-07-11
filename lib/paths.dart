@@ -3,7 +3,6 @@ library paths;
 const String background = 'background.png';
 
 const String gameLogo = 'views/initial/gameLogo.png';
-const String logoArt = 'views/initial/logoArt.png';
 const String startButton = 'views/initial/startButton.png';
 
 const String avatar = 'views/running/avatar.png';
@@ -17,10 +16,15 @@ const String bonus1 = 'views/running/bonus/bonus1.png';
 const String bonus2 = 'views/running/bonus/bonus2.png';
 const String bonus3 = 'views/running/bonus/bonus3.png';
 
+const List<String> bonus1SpritePathList = [bonus1];
+
+const List<String> bonus2SpritePathList = [bonus2];
+
+const List<String> bonus3SpritePathList = [bonus3];
+
 const List<String> pathsList = [
   background,
   gameLogo,
-  logoArt,
   startButton,
   avatar,
   pauseButton,

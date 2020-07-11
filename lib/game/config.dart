@@ -36,3 +36,18 @@ const double enemyRandomSpawnFactor = 0.25;
 const int enemyInitialSpawnTime = 1600;
 const int enemyMinSpawnTime = 700;
 const int enemyChangeSpawnTime = 1;
+
+//    Bonus
+const int bonusMinTimerTime = 10;
+const int bonusMaxTimerTime = 25;
+const double bonusSpeed = 10;
+const double bonusRandomSpeedFactor = 1;
+const double bonusWidth = 0.35; // 35% from laneWidth
+const double bonusDimensionRatio = 1;
+//      Bonus Spawn Controller
+const double bonusRandomSpawnFactor = 0.25; // +25% or -25%
+const int initialBonusSpawnTime = 50000; // 50.000ms = 50s
+const int minBonusSpawnTime = 10000;
+const int changeBonusSpawnTime = 500;
+const int bonusMaxTimerDuration = 30; // seconds
+const int bonusMinTimerDuration = 7;

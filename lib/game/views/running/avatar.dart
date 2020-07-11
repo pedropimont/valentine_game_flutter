@@ -4,11 +4,11 @@ import 'dart:ui';
 import 'package:flame/anchor.dart';
 import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
-import 'package:valentinegameflutter/game/game.dart';
 
 import '../../config.dart' as Config;
 import '../../../paths.dart' as Path;
 
+import '../../game.dart';
 import 'controller.dart';
 
 enum AvatarStatus { flipping, moving, idle } // moving not doing anything

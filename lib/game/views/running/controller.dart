@@ -3,14 +3,14 @@ import 'package:flame/components/composed_component.dart';
 import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:flame/components/mixins/resizable.dart';
 import 'package:flame/components/mixins/tapable.dart';
-import 'package:valentinegameflutter/game/views/running/enemies.dart';
-import 'package:valentinegameflutter/game/views/running/healthPoints.dart';
 
 import '../../game.dart';
 import '../../config.dart' as Config;
 import '../../../utils.dart' as Utils;
 import 'avatar.dart';
 import 'bonus.dart';
+import 'enemies.dart';
+import 'healthPoints.dart';
 import 'pauseResumeButton.dart';
 
 class Controller extends PositionComponent

@@ -39,7 +39,7 @@ const double enemyInitialSpeed = 320;
 const double enemyMaxSpeed = 800;
 const double enemyIncrementSpeed = 0.20;
 const double enemyRandomSpeedFactor = 0.25;
-const double enemyRotateVelocity = pi * 10; // pi * 10 * t
+const double enemyRotateVelocity = pi / 2; // pi / 10 * t
 //      Enemies Spawn Controllers
 const double enemyRandomSpawnFactor = 0.25;
 const int enemyInitialSpawnTime = 1600;

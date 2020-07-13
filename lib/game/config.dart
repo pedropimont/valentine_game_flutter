@@ -62,12 +62,12 @@ const int bonusMinTimerDuration = 7;
 
 // Game Over View
 //    Game Over : Anchor.center
-const double gameOverInitialWidth = 1 / 10;
-const double gameOverDimensionRatio = 286 / 337; // w x h (Standard)
-const double gameOverY = 2 / 5;
-const double gameOverGrownFactor = 1;
-const double gameOverSpins = pi * 8; // 4 Spins
-const double gameOverSpinVelocity = pi * 10; // pi * 10 * t
+const double brokenHeartInitialWidth = 1 / 10;
+const double brokenHeartDimensionRatio = 286 / 337; // w x h (Standard)
+const double brokenHeartY = 2 / 5;
+const double brokenHeartGrownFactor = 2.7;
+const double brokenHeartSpins = pi * 8; // 4 Spins
+const double brokenHeartSpinVelocity = pi * 10; // pi * 10 * t
 
 //    Play Again Button : Anchor.topCenter
 const double playAgainButtonWidth = 2 / 3;

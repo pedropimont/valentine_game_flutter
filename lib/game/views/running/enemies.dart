@@ -8,6 +8,7 @@ import 'package:flame/sprite.dart';
 import '../../config.dart' as Config;
 import '../../../utils.dart' as Utils;
 import '../../../paths.dart' as Path;
+
 import 'controller.dart';
 
 enum EnemyType { enemy1, enemy2, enemy3 }

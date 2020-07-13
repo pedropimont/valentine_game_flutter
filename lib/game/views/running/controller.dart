@@ -4,9 +4,10 @@ import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:flame/components/mixins/resizable.dart';
 import 'package:flame/components/mixins/tapable.dart';
 
-import '../../game.dart';
 import '../../config.dart' as Config;
 import '../../../utils.dart' as Utils;
+
+import '../../game.dart';
 import 'avatar.dart';
 import 'bonus.dart';
 import 'enemies.dart';

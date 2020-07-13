@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 
 import '../../config.dart' as Config;
 import '../../../paths.dart' as Path;
+
 import 'controller.dart';
 
 class PauseResumeButton extends PositionComponent with Tapable, Resizable {

@@ -7,9 +7,11 @@ import 'package:flame/components/mixins/tapable.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/gestures.dart';
 
-import '../../game.dart';
 import '../../../paths.dart' as Path;
 import '../../config.dart' as Config;
+
+import '../../game.dart';
+
 
 class StartButton extends SpriteComponent with Resizable, Tapable {
   ValentineGame game;

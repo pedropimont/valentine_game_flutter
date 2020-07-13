@@ -8,9 +8,10 @@ import 'package:flame/components/mixins/resizable.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/painting.dart';
 
-import 'controller.dart';
 import '../../../utils.dart' as Utils;
 import '../../../paths.dart' as Path;
+
+import 'controller.dart';
 import 'bonusTimer.dart';
 
 // TODO: GameConfig
@@ -23,9 +24,10 @@ class Bonus extends AnimationComponent with Resizable {
   Offset targetOffset;
   bool remove = false;
   bool angleFlip = false;
-//  double get speed => game.laneWidth * 3;
   double xOffset;
   double yOffset;
+
+  double get speed => controller.laneWidth * 3;
 
   factory Bonus(Controller controller) {
     int _rndInt = Utils.rnd.nextInt(BonusType.values.length);

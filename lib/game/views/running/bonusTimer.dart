@@ -7,6 +7,7 @@ import 'package:flutter/painting.dart';
 import '../../../paths.dart' as Path;
 import '../../../utils.dart' as Utils;
 import '../../config.dart' as Config;
+
 import 'controller.dart';
 import 'bonus.dart';
 

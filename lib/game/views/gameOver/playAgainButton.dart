@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 
 import '../../config.dart' as Config;
 import '../../../paths.dart' as Path;
+
 import 'gameOverView.dart';
 
 class PlayAgainButton extends SpriteComponent with Tapable, Resizable {

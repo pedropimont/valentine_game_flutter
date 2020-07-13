@@ -22,6 +22,7 @@ class Controller extends PositionComponent
   PauseResumeButton pauseResumeButton;
 
   bool paused = false;
+
   int lives = Config.lives;
   int laneQuantity = Config.laneQuantity;
   double laneWidth;

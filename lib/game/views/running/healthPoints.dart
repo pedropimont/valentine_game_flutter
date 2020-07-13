@@ -8,6 +8,7 @@ import '../../config.dart' as Config;
 
 import 'controller.dart';
 
+/// [HealthPoints] will take care of rendering the number of lives remaining
 class HealthPoints extends PositionComponent {
   Controller controller;
   Sprite sprite = Sprite(Path.healthPoint);

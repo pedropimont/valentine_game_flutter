@@ -92,7 +92,7 @@ class Bonus extends AnimationComponent with Resizable {
 
     if (!angleFlip) angle += pi / 2 * t;
     if (angleFlip) angle -= pi / 2 * t;
-    // TODO: problem when skip frame?
+    // TODO: causing problem when game skips frame?
     if (angle.abs() >= pi / 4) angleFlip = !angleFlip;
 
     Offset toTarget = targetOffset - Offset(x, y);

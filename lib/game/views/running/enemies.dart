@@ -60,7 +60,7 @@ class Enemy extends SpriteComponent with Resizable {
 
   @override
   void resize(Size size) {
-    // It's not calling resize when creating new enemy. Why?
+    // TODO: It's not being called when creating new enemy. Why?
   }
 
   @override
@@ -72,7 +72,7 @@ class Enemy extends SpriteComponent with Resizable {
         controller.loseHealthPoint();
         remove = true;
       }
-      remove = _hasReachedFloor;
+      remove = _isOffScreen;
     }
     super.update(t);
   }
@@ -82,10 +82,12 @@ class Enemy extends SpriteComponent with Resizable {
   }
 
   void _rotate(double t) {
-    angle += 3.14 / 10 * t; // << ConfigFile: pi/10
+    angle += Config.enemyRotateVelocity * t;
   }
 
-  bool get _hasReachedFloor =>
+  /// The Height used to decide if enemy is removed is relative to the Avatar's height
+  // TODO: poor variable naming -> should make reference to avatar height proportion
+  bool get _isOffScreen =>
       (y >= _yToCheckForCollision * Config.enemyHeightToRemove);
 
   /// no point in keep checking for collisions until certain y position
@@ -98,13 +100,6 @@ class Enemy extends SpriteComponent with Resizable {
       return true;
     }
     return false;
-  }
-
-  @override
-  void onDestroy() {
-    // not calling on destroy also.
-    print('destroying $this');
-    super.onDestroy();
   }
 
   @override

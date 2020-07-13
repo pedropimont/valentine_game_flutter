@@ -19,10 +19,7 @@ class Avatar extends SpriteComponent {
   int lane;
   AvatarStatus status = AvatarStatus.idle;
 
-  Avatar(this.controller) : super.fromSprite(16.0, 16.0, Sprite(Path.avatar)) {
-    anchor = Anchor.center;
-    lane = (controller.laneQuantity + 1) ~/ 2;
-  }
+  Avatar(this.controller) : super.fromSprite(16.0, 16.0, Sprite(Path.avatar));
 
   @override
   void update(double t) {
@@ -32,11 +29,15 @@ class Avatar extends SpriteComponent {
 
   @override
   void resize(Size size) {
+    anchor = Anchor.center;
+    lane = (controller.laneQuantity + 1) ~/ 2;
     width = controller.laneWidth * Config.avatarWidth;
     height = width * Config.avatarDimensionRatio;
-    x = lane * controller.laneWidth - controller.laneWidth / 2;
+    x = _getX;
     y = size.height - height / 2;
   }
+
+  double get _getX => lane * controller.laneWidth - controller.laneWidth / 2;
 
   void _flip() {
     angle += renderFlipX ? pi / 15 : -pi / 15;
@@ -54,30 +55,22 @@ class Avatar extends SpriteComponent {
   }
 
   void _shoot() {
-    // should be called from here?
     controller.add(Bullet(controller));
   }
 
   void handleHorizontalDragEnd(DragDirection dragDirection) {
-    switch (dragDirection) {
-      case DragDirection.right:
-        {
-          if (lane < 5) {
-            renderFlipX = false;
-            lane += 1;
-          }
-          break;
-        }
-      case DragDirection.left:
-        {
-          if (lane > 1) {
-            renderFlipX = true;
-            lane -= 1;
-          }
-          break;
-        }
+    if (dragDirection == DragDirection.right) {
+      if (lane < Config.laneQuantity) {
+        renderFlipX = false;
+        lane += 1;
+      }
     }
-    // duplicate
-    x = lane * controller.laneWidth - controller.laneWidth / 2;
+    if (dragDirection == DragDirection.left) {
+      if (lane > 1) {
+        renderFlipX = true;
+        lane -= 1;
+      }
+    }
+    x = _getX;
   }
 }

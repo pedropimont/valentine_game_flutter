@@ -6,6 +6,8 @@ import 'dart:math';
 
 Random rnd = Random();
 
+// TODO: break into 2 functions?
+/// ex: maxRandomFactor = 0.70 will give Random number between -0.70 and 0.70
 double nextDoubleFromMinusFactorToFactor(double maxRandomFactor) {
   double randomFactor = maxRandomFactor >= 1
       ? rnd.nextDouble()

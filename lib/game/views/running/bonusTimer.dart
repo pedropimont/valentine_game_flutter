@@ -7,11 +7,11 @@ import 'package:flutter/painting.dart';
 import '../../../paths.dart' as Path;
 import '../../../utils.dart' as Utils;
 import '../../config.dart' as Config;
+
 import 'controller.dart';
 import 'bonus.dart';
 
-// TODO: GameConfig
-
+// TODO: refactor constants into configs file
 class BonusTimer extends SpriteComponent {
   Controller controller;
   Bonus bonus;
@@ -75,11 +75,6 @@ class BonusTimer extends SpriteComponent {
     textOffset = Offset(controller.laneWidth / 15, timerText.height / 10);
 
     super.update(t);
-  }
-
-  @override
-  void onDestroy() {
-    // TODO: não ta chamando essa joça antes de exclui do thread
   }
 
   @override

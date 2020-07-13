@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 
 import '../../config.dart' as Config;
 import '../../../paths.dart' as Path;
+
 import 'controller.dart';
 
 class PauseResumeButton extends PositionComponent with Tapable, Resizable {
@@ -26,6 +27,7 @@ class PauseResumeButton extends PositionComponent with Tapable, Resizable {
   void resize(Size size) {
     width = size.width * Config.pauseResumeButtonWidth;
     height = width / Config.pauseResumeDimensionRatio;
+    // TODO: declare functions that take size on Config??
     x = size.width - 16;
     y = 20;
   }

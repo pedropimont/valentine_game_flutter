@@ -13,12 +13,12 @@ class SadAvatar extends SpriteComponent {
   GameOverView gameOverView;
 
   SadAvatar(this.gameOverView)
-      : super.fromSprite(16.0, 16.0, Sprite(Path.sadAvatar)) {
-    anchor = Anchor.center;
-  }
+      : super.fromSprite(16.0, 16.0, Sprite(Path.sadAvatar));
 
   @override
   void resize(Size size) {
+    anchor = Anchor.center;
+
     width = size.width * Config.avatarSadWidth;
     height = width / Config.avatarSadDimensionRatio;
     x = size.width * Config.avatarSadX;

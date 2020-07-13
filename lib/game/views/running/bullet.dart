@@ -16,33 +16,14 @@ class Bullet extends SpriteComponent with Resizable {
 
   Bullet(this.controller) : super.fromSprite(16.0, 16.0, Sprite(Path.bullet));
 
-  void checkForCollision() {
-    for (Bonus bonus in controller.components.whereType<Bonus>()) {
-      if (this.toRect().contains(bonus.toRect().topLeft) ||
-          this.toRect().contains(bonus.toRect().topCenter) ||
-          this.toRect().contains(bonus.toRect().topRight)) {
-        this.remove = true;
-      }
-    }
-  }
-
-  @override
-  void update(double t) {
-    // speed should use gameSpeed?
-    checkForCollision();
-    y -= t * Config.bulletSpeed;
-    if (y <= 0) remove = true;
-    super.update(t);
-  }
-
   @override
   void resize(Size size) {
-    // GameConfig for this?
+    /// Since avatar is not symmetrical, Bullet's X will change when avatar is mirrored
     x = controller.avatar.renderFlipX
         ? controller.avatar.x - controller.avatar.width * 2 / 5
         : controller.avatar.x;
 
-    // GameConfig.avatarMouthY?
+    /// Height where bullet will be shoot by the avatar's gun
     y = size.height - 2 / 3 * controller.avatar.height;
 
     width = controller.laneWidth * Config.bulletWidth;
@@ -50,7 +31,25 @@ class Bullet extends SpriteComponent with Resizable {
   }
 
   @override
-  void onDestroy() {}
+  void update(double t) {
+    y -= t * Config.bulletSpeed;
+    if (_collision) remove = true;
+    if (_isOffScreen) remove = true;
+    super.update(t);
+  }
+
+  bool get _collision {
+    for (Bonus bonus in controller.components.whereType<Bonus>()) {
+      if (this.toRect().contains(bonus.toRect().topLeft) ||
+          this.toRect().contains(bonus.toRect().topCenter) ||
+          this.toRect().contains(bonus.toRect().topRight)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool get _isOffScreen => y <= 0;
 
   @override
   bool destroy() {

@@ -6,36 +6,43 @@ import 'package:flame/sprite.dart';
 
 import '../../config.dart' as Config;
 import '../../../paths.dart' as Path;
+
 import 'gameOverView.dart';
 
 class BrokenHeart extends SpriteComponent {
-  GameOverView controller;
+  GameOverView gameOverView;
 
-  BrokenHeart(this.controller)
-      : super.fromSprite(16.0, 16.0, Sprite(Path.brokenHeart)) {
-    anchor = Anchor.center;
-  }
+  BrokenHeart(this.gameOverView)
+      : super.fromSprite(16.0, 16.0, Sprite(Path.brokenHeart));
 
   @override
   void resize(Size size) {
-    width = size.width * Config.gameOverInitialWidth;
-    height = width / Config.gameOverDimensionRatio;
+    anchor = Anchor.center;
+    width = size.width * Config.brokenHeartInitialWidth;
+    height = width / Config.brokenHeartDimensionRatio;
     x = size.width / 2;
-    y = size.height * Config.gameOverY;
-    super.resize(size);
+    y = size.height * Config.brokenHeartY;
   }
 
   @override
   void update(double t) {
-    if (controller.animating) {
-      angle += t * Config.gameOverSpinVelocity;
-      width += Config.gameOverGrownFactor;
-      height = width / Config.gameOverDimensionRatio;
-      if (angle >= Config.gameOverSpins) {
+    if (gameOverView.animating) {
+      _spin(t);
+      _grown(t);
+      if (angle >= Config.brokenHeartSpins) {
         angle = 0;
-        controller.animating = false;
+        gameOverView.animating = false;
       }
     }
     super.update(t);
+  }
+
+  void _spin(double t) {
+    angle += t * Config.brokenHeartSpinVelocity;
+  }
+
+  void _grown(double t) {
+    width += t * Config.brokenHeartGrownFactor;
+    height = width / Config.brokenHeartDimensionRatio;
   }
 }

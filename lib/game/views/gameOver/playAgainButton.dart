@@ -16,12 +16,11 @@ class PlayAgainButton extends SpriteComponent with Tapable, Resizable {
   GameOverView gameOverView;
 
   PlayAgainButton(this.gameOverView)
-      : super.fromSprite(16.0, 16.0, Sprite(Path.playAgainButton)) {
-    anchor = Anchor.topCenter;
-  }
+      : super.fromSprite(16.0, 16.0, Sprite(Path.playAgainButton));
 
   @override
   void resize(Size size) {
+    anchor = Anchor.topCenter;
     width = size.width * Config.playAgainButtonWidth;
     height = width / Config.playAgainButtonDimensionRatio;
     y = size.height * Config.playAgainButtonY;

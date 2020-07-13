@@ -13,19 +13,15 @@ class BrokenHeart extends SpriteComponent {
   GameOverView gameOverView;
 
   BrokenHeart(this.gameOverView)
-      : super.fromSprite(16.0, 16.0, Sprite(Path.brokenHeart)) {
-    anchor = Anchor.center;
-  }
+      : super.fromSprite(16.0, 16.0, Sprite(Path.brokenHeart));
 
   @override
   void resize(Size size) {
+    anchor = Anchor.center;
     width = size.width * Config.brokenHeartInitialWidth;
     height = width / Config.brokenHeartDimensionRatio;
-
     x = size.width / 2;
     y = size.height * Config.brokenHeartY;
-
-    super.resize(size);
   }
 
   @override

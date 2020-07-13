@@ -10,13 +10,13 @@ import 'sadAvatar.dart';
 
 class GameOverView extends PositionComponent
     with HasGameRef, Tapable, ComposedComponent {
+  ValentineGame game;
   BrokenHeart brokenHeart;
   PlayAgainButton playAgainButton;
   SadAvatar sadAvatar;
 
   bool animating = true;
   bool remove = false;
-  ValentineGame game;
 
   GameOverView(this.game) {
     brokenHeart = BrokenHeart(this);

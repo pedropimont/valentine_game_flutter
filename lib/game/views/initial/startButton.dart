@@ -16,20 +16,19 @@ class StartButton extends SpriteComponent with Resizable, Tapable {
   ValentineGame game;
 
   StartButton(this.game)
-      : super.fromSprite(16.0, 16.0, Sprite(Path.startButton)) {
+      : super.fromSprite(16.0, 16.0, Sprite(Path.startButton));
+
+  @override
+  void resize(Size size) {
     anchor = Anchor.topCenter;
+    x = size.width / 2;
+    y = size.height * Config.startButtonY;
+    width = size.width * Config.startButtonWidthPortion;
+    height = width / Config.startButtonDimensionRatio;
   }
 
   @override
   void onTapUp(TapUpDetails details) {
     game.start();
-  }
-
-  @override
-  void resize(Size size) {
-    x = size.width / 2;
-    y = size.height * Config.startButtonY;
-    width = size.width * Config.startButtonWidthPortion;
-    height = width / Config.startButtonDimensionRatio;
   }
 }

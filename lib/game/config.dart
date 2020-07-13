@@ -65,7 +65,7 @@ const int bonusMinTimerDuration = 7;
 const double brokenHeartInitialWidth = 1 / 10;
 const double brokenHeartDimensionRatio = 286 / 337; // w x h (Standard)
 const double brokenHeartY = 2 / 5;
-const double brokenHeartGrownFactor = 2.7;
+const double brokenHeartGrownFactor = 140; // 140 * t
 const double brokenHeartSpins = pi * 8; // 4 Spins
 const double brokenHeartSpinVelocity = pi * 10; // pi * 10 * t
 

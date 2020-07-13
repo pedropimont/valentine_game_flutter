@@ -12,7 +12,6 @@ import '../../config.dart' as Config;
 
 import '../../game.dart';
 
-
 class StartButton extends SpriteComponent with Resizable, Tapable {
   ValentineGame game;
 

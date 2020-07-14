@@ -32,18 +32,18 @@ const double bulletWidth = 0.4;
 const double bulletDimensionRatio = 1;
 const double bulletSpeed = 500; // 10 * t
 //    Enemies
-const double enemyWidth = 0.70; // 35% from laneWidth
+const double enemyWidth = 0.50; // 35% from laneWidth
 const double enemyDimensionRatio = 1;
 const double enemyHeightToRemove = 0.75; // 75% Avatar
-const double enemyInitialSpeed = 320;
+const double enemyInitialSpeed = 500;
 const double enemyMaxSpeed = 800;
 const double enemyIncrementSpeed = 0.20;
 const double enemyRandomSpeedFactor = 0.25;
 const double enemyRotateVelocity = pi / 2; // pi / 10 * t
 //      Enemies Spawn Controllers
 const double enemyRandomSpawnFactor = 0.25;
-const int enemyInitialSpawnTime = 1600;
-const int enemyMinSpawnTime = 700;
+const int enemyInitialSpawnTime = 600;
+const int enemyMinSpawnTime = 400;
 const int enemyChangeSpawnTime = 1;
 
 //    Bonus

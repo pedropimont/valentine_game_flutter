@@ -28,20 +28,26 @@ class Enemy extends SpriteComponent with Resizable {
     switch (_rndEnemyType) {
       case EnemyType.enemy1:
         {
-          return Enemy._(Sprite(Path.enemy1), controller);
+          return Enemy.enemy1(controller);
         }
       case EnemyType.enemy2:
         {
-          return Enemy._(Sprite(Path.enemy2), controller);
+          return Enemy.enemy2(controller);
         }
       case EnemyType.enemy3:
         {
-          return Enemy._(Sprite(Path.enemy3), controller);
+          return Enemy.enemy3(controller);
         }
       default:
-        return Enemy._(Sprite(Path.enemy1), controller);
+        return Enemy.enemy1(controller);
     }
   }
+
+  Enemy.enemy1(controller) : this._(Sprite(Path.enemy1), controller);
+
+  Enemy.enemy2(controller) : this._(Sprite(Path.enemy2), controller);
+
+  Enemy.enemy3(controller) : this._(Sprite(Path.enemy3), controller);
 
   Enemy._(this.sprite, this.controller) : super.fromSprite(16.0, 16.0, sprite) {
     lane = Utils.rnd.nextInt(controller.laneQuantity) + 1;
